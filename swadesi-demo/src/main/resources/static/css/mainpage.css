@@ -1,0 +1,262 @@
+body {
+    font-family: Raleway, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover; 
+    background-color: transparent;
+    color: transparent;
+}
+
+* {
+	color: transparent;
+	font-family: Raleway, sans-serif;
+}
+.navbar {
+    position: fixed; /* changed from sticky to fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 0%;
+    padding-left: 0%;
+    margin: 0%;
+    border: 0%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    transition: background-color 0.3s ease;
+}
+
+.hero {
+    position: relative;
+    padding-top: 300px; /* Keep space for heading, not navbar */
+	background-image: url('/images/farak2.jpg'); 
+	background-size: cover;         /* Makes sure the image covers the whole area */
+    background-position: center;    /* Keeps the image centered */
+    background-repeat: no-repeat;   /* No repeat */   
+	text-align: center;
+    padding: 100px 20px;
+    height: 400px;
+}
+
+/* When scrolled OR hovered */
+.navbar.scrolled,
+.navbar:hover {
+    background-color:ghostwhite ;
+    color: #4F0F38;
+}
+
+/* Avoid increasing font size on scroll */
+.navbar.scrolled .title .logo,
+.navbar:hover .title .logo {
+    color: #4F0F38;
+}
+
+/* Styling for nav links */
+.navbar nav a {
+    border: 1px solid ghostwhite; 
+    font-family: Raleway, sans-serif;
+    color: ghostwhite;
+    text-decoration: none;
+    margin-left: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+.navbar nav a:hover {
+    background-color:ghostwhite;
+    color: #4F0F38;
+}
+
+.exploreButton {
+    display: block;
+    margin: 30px auto; /* auto horizontally centers the block */
+    border: 1px solid #4F0F38; 
+    font-family: 'Raleway', sans-serif;
+    margin-left: 650px;
+    margin-right: 650px;
+    padding: 16px 24px;
+    background-color: ghostwhite;
+    color: #4F0F38;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.exploreButton:hover {
+        background-color: #4F0F38;
+        color: ghostwhite;
+    }
+
+
+/* Logo base styling */
+.title .logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: ghostwhite;
+    margin: 0;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo h1 {
+    text-align: center;
+    font-family: Raleway, sans-serif;
+}
+
+.logo h1:hover {
+    text-align: center;
+    color: #4F0F38;
+    font-family: Raleway, sans-serif;
+}
+.desiText {
+    position: relative;
+    padding-top: 300px; /* Keep space for heading, not navbar */
+	text-align: center;
+    padding: 10px 20px;
+    height: 300px;
+}
+
+.desiText h2 {
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #4F0F38;
+    font-family: Raleway, sans-serif;
+}
+
+.desiText p {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #4F0F38;
+    font-family: Raleway, sans-serif;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 30px;
+    padding: 40px;
+}
+
+.product {
+    text-align: center;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+}
+
+.product img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 500px; /* Maintain aspect ratio */
+    max-height: 500px;
+    object-fit: fill;
+}
+
+.product p {
+    color: #4F0F38;
+    font-size: 16px;
+    margin: 8px 0;
+}
+/* Sidebar styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: ghostwhite;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar a {
+    padding: 12px 24px;
+    font-family: Raleway, sans-serif;
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-size: 16px;
+    color: #4F0F38;
+    display: block;
+    border-bottom: 1px solid #eee;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: #4F0F38;
+    color: ghostwhite;
+    font-family: Raleway, sans-serif;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+.menu-section {
+    margin-bottom: 10px;
+}
+.submenu {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.submenu a {
+    font-size: 14px;
+    margin: 4px 0;
+    text-decoration: none;
+    color: #4F0F38; /* lighter color for submenu */
+}
+.submenu a:hover {
+    color: #fff; /* brighter on hover */
+}
+
+
+/* Hamburger icon */
+.openbtn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color:ghostwhite;
+    z-index: 2100;
+}
+
+.navbar:hover .openbtn,
+.navbar.scrolled .openbtn {
+    color: #4F0F38;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100vh;
+  background: black; /* or match your background */
+  color: transparent;
+  z-index: 9999;
+  pointer-events: none;
+}

@@ -1,0 +1,95 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+        <link rel="stylesheet" th:href="@{/css/productsByCategory.css}">
+</head>
+<body>
+    <section class="hero">
+    <header class="navbar">
+		
+        <nav>
+            
+        </nav>
+        
+		<!-- Sidebar Trigger -->
+		<button id="menuBtn" class="openbtn" onclick="openNav()">☰</button>
+		
+		<div class="title">
+			<div class="logo">&#2360;&#2381;&#2357;DESI</div>
+		</div>
+		
+		<!-- Sidebar -->
+		<div id="mySidebar" class="sidebar">
+    		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a><br/><br/>
+		    <a th:href="@{/}">Home</a>
+		    <div class="menu-section">
+		        <a href="javascript:void(0)" onclick="toggleSubmenu('collectionsSubmenu')">Collections</a>
+        		<div id="collectionsSubmenu" class="submenu" style="display: none;">
+		            <a th:href="@{/collections/new-arrivals}">New Arrivals</a>
+		            <a th:href="@{/collections/bestsellers}">Best Sellers</a>
+		            <a th:href="@{/collections/season-sale}">Season Sale</a>
+		        </div>
+		    </div>
+		    <div class="menu-section">
+			    <a href="javascript:void(0)" onclick="toggleSubmenu('categoriesSubmenu')">Categories</a>
+        		<div id="categoriesSubmenu" class="submenu" style="display: none;">
+		            <a th:href="@{/category/T-shirt}">T-Shirt</a>
+		            <a th:href="@{/category/Jeans}">Jeans</a>
+		            <a th:href="@{/category/Tank-Top}">Tank-Top</a>
+		        </div>    
+	        </div>
+		    <a th:href="@{/login}">Log In</a>
+            <a th:href="@{/register}">Register</a>
+		    <a th:href="@{/about}">About</a>
+		    <a th:href="@{/contact}">Contact</a>
+		
+		</div>
+    </header>
+    </section>
+	<section class="products">
+	    <div class="product" th:each="product : ${products}">
+	        <a th:href="@{'/product/' + ${product.id}}">
+	            <img th:src="@{${product.url}}" width="100" />
+	        </a>
+	        <p class="brand" th:text="'Swadesi'">Brand</p>
+	        <p class="mainName" th:text="${product.name}">Product Name</p>
+	        <p class="price" th:text="'RS. ' + ${product.price}">RS. 0.00</p>
+	    </div>
+	</section> 
+	
+	
+	<br><br><br>
+	<script>
+	    function openNav() {
+	        document.getElementById("mySidebar").style.width = "250px";
+	        document.getElementById("menuBtn").style.display = "none"; 
+	
+	    }
+	
+	    function closeNav() {
+	        document.getElementById("mySidebar").style.width = "0";
+	        document.getElementById("menuBtn").style.display = "block"; 
+	
+	    }
+	    window.addEventListener('scroll', function() {
+	    const navbar = document.querySelector('.navbar');
+	    if (window.scrollY > 50) {
+	      navbar.classList.add('scrolled');
+	    } else {
+	      navbar.classList.remove('scrolled');
+	    }
+	  });
+	  
+	    function toggleSubmenu(id) {
+    var submenu = document.getElementById(id);
+    if (submenu.style.display === "block") {
+        submenu.style.display = "none";
+    } else {
+        submenu.style.display = "block";
+    }
+}
+	</script>
+    </body>
+</html>
