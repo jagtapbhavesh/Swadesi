@@ -1,113 +1,85 @@
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-        <link rel="stylesheet" th:href="@{/css/login.css}">
-
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <style>
+		
+		.navbar-brand {
+			
+		}
+	</style>
     
 </head>
+
 <body>
-    <section class="hero">
-    <header class="navbar">
-		
-        <nav>
-            
-        </nav>
-        
-		<!-- Sidebar Trigger -->
-		<button id="menuBtn" class="openbtn" onclick="openNav()">☰</button>
-		
-		<div class="title">
-			<div class="logo">&#2360;&#2381;&#2357;DESI</div>
-		</div>
-		
-		<!-- Sidebar -->
-		<div id="mySidebar" class="sidebar">
-    		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a><br/><br/>
-		    <a th:href="@{/}">Home</a>
-		    <div class="menu-section">
-		        <a href="javascript:void(0)" onclick="toggleSubmenu('collectionsSubmenu')">Collections</a>
-        		<div id="collectionsSubmenu" class="submenu" style="display: none;">
-		            <a th:href="@{/collections/new-arrivals}">New Arrivals</a>
-		            <a th:href="@{/collections/bestsellers}">Best Sellers</a>
-		            <a th:href="@{/collections/season-sale}">Season Sale</a>
-		        </div>
-		    </div>
-		    <div class="menu-section">
-			    <a href="javascript:void(0)" onclick="toggleSubmenu('categoriesSubmenu')">Categories</a>
-        		<div id="categoriesSubmenu" class="submenu" style="display: none;">
-		            <a th:href="@{/category/T-shirt}">T-Shirt</a>
-		            <a th:href="@{/category/Jeans}">Jeans</a>
-		            <a th:href="@{/category/Tank-Top}">Tank-Top</a>
-		        </div>    
-	        </div>
-		    <a th:href="@{/login}">Log In</a>
-            <a th:href="@{/register}">Register</a>
-		    <a th:href="@{/about}">About</a>
-		    <a th:href="@{/contact}">Contact</a>
-		
-		</div>
-    </header>
-    </section>
-    <div class="modal">
-        <h2>Login</h2>
-        <form th:action="@{/login}" method="post">
-            <input
-                placeholder="Email"
-                name="username"
-                field="{email}"
-                type="email"
-                class="form-control"
-                required
-            />
-            <input
-                placeholder="Password"
-                name="password"
-                field="{password}"
-                type="password"
-                class="form-control"
-                required
-            />
-            <p><a th:href="@{/forgot-password}" class="color-text float-right">Forgot password?</a></p>
-            <button type="submit" class="myBtn">Login</button>
-        </form>
-        <p>Don't have an account? <a
-                class="color-text"
-                href="#"
-                th:href="@{/register}"
-            >Register here</a></p>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <button class="btn btn-outline-light me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+                ☰
+            </button>
+            <a class="navbar-brand mx-auto" href="#">स्वDESI</a>
+        </div>
+    </nav>
+
+    <!-- Sidebar Offcanvas -->
+    <div class="offcanvas offcanvas-start bg-light" tabindex="-1" id="sidebar">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <a class="nav-link" th:href="@{/}">Home</a>
+            <hr>
+            <div>
+                <a class="nav-link" data-bs-toggle="collapse" href="#collectionsCollapse">Collections</a>
+                <div class="collapse" id="collectionsCollapse">
+                    <a class="nav-link ms-3" th:href="@{/collections/new-arrivals}">New Arrivals</a>
+                    <a class="nav-link ms-3" th:href="@{/collections/bestsellers}">Best Sellers</a>
+                    <a class="nav-link ms-3" th:href="@{/collections/season-sale}">Season Sale</a>
+                </div>
+            </div>
+            <div>
+                <a class="nav-link" data-bs-toggle="collapse" href="#categoriesCollapse">Categories</a>
+                <div class="collapse" id="categoriesCollapse">
+                    <a class="nav-link ms-3" th:href="@{/category/T-shirt}">T-Shirt</a>
+                    <a class="nav-link ms-3" th:href="@{/category/Jeans}">Jeans</a>
+                    <a class="nav-link ms-3" th:href="@{/category/Tank-Top}">Tank-Top</a>
+                </div>
+            </div>
+            <a class="nav-link" th:href="@{/login}">Log In</a>
+            <a class="nav-link" th:href="@{/register}">Register</a>
+            <a class="nav-link" th:href="@{/about}">About</a>
+            <a class="nav-link" th:href="@{/contact}">Contact</a>
+        </div>
     </div>
-    
-    <script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("menuBtn").style.display = "none"; 
+	<br><br>
+    <!-- Login Form Section -->
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+            <h2 class="text-center text-dark mb-4">Login</h2>
+            <form th:action="@{/login}" method="post">
+                <div class="mb-3">
+                    <input type="email" class="form-control" name="username" placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                </div>
+                <div class="mb-3 text-end">
+                    <a th:href="@{/forgot-password}" class="small text-decoration-none">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn btn-dark w-100">Login</button>
+            </form>
+            <p class="text-center mt-3 mb-0">Don't have an account? <a th:href="@{/register}">Register here</a></p>
+        </div>
+    </div>
 
-    }
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("menuBtn").style.display = "block"; 
-
-    }
-    window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-  
-    function toggleSubmenu(id) {
-    var submenu = document.getElementById(id);
-    if (submenu.style.display === "block") {
-        submenu.style.display = "none";
-    } else {
-        submenu.style.display = "block";
-    }
-}
-</script>
+    <!-- Bootstrap JS (for offcanvas & collapse) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
