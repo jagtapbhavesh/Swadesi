@@ -17,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Optional;
@@ -99,6 +101,14 @@ public class UsersController {
         }
     }
     
+    @GetMapping("/refundPolicy")
+    public String refundPolicy(Model model) {
+
+        Object currentUserProfile = usersService.getCurrentUserProfile();
+        model.addAttribute("user", currentUserProfile);
+
+        return "refundPolicy";
+    }
     
     
     @GetMapping("/dashboard")
